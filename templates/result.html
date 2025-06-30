@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="result-box">
+    <h2>Result</h2>
+    <p><strong>Name:</strong> {{ student.name }}</p>
+    <p><strong>Roll:</strong> {{ student.roll }}</p>
+    <p><strong>Marks:</strong> {{ student.marks }}</p>
+    <p><strong>Average:</strong> {{ average }}</p>
+    <p><strong>Grade:</strong> {{ grade }}</p>
+
+    {% if grade == "Pass & C" %}
+      <p class="warning">⚠️ You failed a subject but passed with bonus</p>
+    {% elif grade == "Fail" %}
+      <p class="fail">❌ You failed</p>
+    {% endif %}
+    <br>
+    <a href="/">← Try Another Student</a>
+  </div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: student-result-app
+    env: python
+    buildCommand: ""
+    startCommand: "python app.py"
+    plan: free
+    branch: main
+    region: oregon

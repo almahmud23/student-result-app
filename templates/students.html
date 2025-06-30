@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Students</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <h2>Student List</h2>
+  <table border="1" cellpadding="8">
+    <tr>
+      <th>Roll</th>
+      <th>Name</th>
+      <th>Marks</th>
+      <th>Average</th>
+      <th>Grade</th>
+      <th>Status</th>
+    </tr>
+    {% for s in students %}
+    <tr>
+      <td>{{ s.roll }}</td>
+      <td>{{ s.name }}</td>
+      <td>{{ s.marks }}</td>
+      <td>{{ s.average }}</td>
+      <td>{{ s.grade }}</td>
+      <td>
+        {% if s.status == "Bonus Pass" %}
+          <span class="warning">⚠️ Bonus Pass</span>
+        {% elif s.status == "Fail" %}
+          <span class="fail">❌ Fail</span>
+        {% else %}
+          ✅ OK
+        {% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+  <br>
+  <a href="{{ url_for('index') }}">➕ Add Another Student</a> |
+<a href="{{ url_for('download_csv') }}">📥 Download CSV</a>
+
+</body>
+</html>
